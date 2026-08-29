@@ -1,0 +1,15 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        numMap={}
+        numSet=set()
+        
+        for num in nums:
+            numSet.add(num)
+        mini=min(numSet)
+        maxi=max(numSet)
+        while mini<maxi:
+            if mini in numSet:
+                if mini+1 in numSet:
+                    numMap[mini+1]=numMap.get(mini,1)+1
+            mini+=1       
+        return max(numMap.values())
